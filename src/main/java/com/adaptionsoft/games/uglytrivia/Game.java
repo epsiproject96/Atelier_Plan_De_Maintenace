@@ -214,4 +214,10 @@ public class Game {
 	public void setCurrentPlayer(int currentPlayer) {
 		this.currentPlayer = currentPlayer;
 	}
+
+	public void usedJoker(Player player) {
+		// TODO Auto-generated method stub
+		player.setIsJokerDisponible(false);
+		System.out.println("Le joker de " + getPlayers().get(currentPlayer).getName() + "a été utilisé, aucun golds n'a été gagné et le joker ne sera plus disponible pour aucune autre question.");
+	}
 }

@@ -39,15 +39,28 @@ public class GameRunner {
 			do {
 				
 				aGame.roll(rand.nextInt(5) + 1);
-				
-				System.out.println(aGame.getPlayers().get(aGame.getCurrentPlayer()) + ", voulez vous utiliser votre Joker ? Oui/Non");
-				String jokerUtilise = in.nextLine();
-				
-				if (rand.nextInt(9) == 7) {
-					notAWinner = aGame.wrongAnswer();
+				if(aGame.getPlayers().get(aGame.getCurrentPlayer()).isJokerDisponible()){
+					System.out.println(aGame.getPlayers().get(aGame.getCurrentPlayer()).getName() + ", voulez vous utiliser votre Joker ? Oui/Non");
+					String jokerUtilise = in.nextLine();
+					if(jokerUtilise.equals("Oui")) {
+						aGame.usedJoker(aGame.getPlayers().get(aGame.getCurrentPlayer()));
+						
+					} else if(jokerUtilise.equals("Non")) {
+						if (rand.nextInt(9) == 7) {
+							notAWinner = aGame.wrongAnswer();
+						} else {
+							notAWinner = aGame.wasCorrectlyAnswered();
+						}
+					}
 				} else {
-					notAWinner = aGame.wasCorrectlyAnswered();
+					if (rand.nextInt(9) == 7) {
+						notAWinner = aGame.wrongAnswer();
+					} else {
+						notAWinner = aGame.wasCorrectlyAnswered();
+					}
 				}
+				
+				
 				
 				
 				
