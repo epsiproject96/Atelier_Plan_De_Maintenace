@@ -59,6 +59,7 @@ public class Game {
 			return true;
 		} else {
 			System.out.println(playerName + " not added, too much player");
+		    players.add("");
 		    System.out.println("They are player number " + players.size());
 			return false;
 		}
