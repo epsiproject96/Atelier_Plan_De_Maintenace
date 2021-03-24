@@ -5,9 +5,9 @@ import java.util.LinkedList;
 
 public class Game {
     ArrayList players = new ArrayList();
-    int[] places = new int[6];
-    int[] purses  = new int[6];
-    boolean[] inPenaltyBox  = new boolean[6];
+    int[] places = new int[7];
+    int[] purses  = new int[7];
+    boolean[] inPenaltyBox  = new boolean[7];
     
     LinkedList popQuestions = new LinkedList();
     LinkedList scienceQuestions = new LinkedList();
@@ -31,20 +31,27 @@ public class Game {
 	}
 	
 	public boolean isPlayable() {
-		return (howManyPlayers() >= 2);
+		return (howManyPlayers() >= 2 && howManyPlayers() <= 6);
 	}
 
 	public boolean add(String playerName) {
 		
+		if(howManyPlayers() <= 5 ) {
+			players.add(playerName);
+		    places[howManyPlayers()] = 0;
+		    purses[howManyPlayers()] = 0;
+		    inPenaltyBox[howManyPlayers()] = false;
+		    
+		    System.out.println(playerName + " was added");
+		    System.out.println("They are player number " + players.size());
+			return true;
+		} else {
+			System.out.println(playerName + " not added, too much player");
+		    System.out.println("They are player number " + players.size());
+			return false;
+		}
 		
-	    players.add(playerName);
-	    places[howManyPlayers()] = 0;
-	    purses[howManyPlayers()] = 0;
-	    inPenaltyBox[howManyPlayers()] = false;
 	    
-	    System.out.println(playerName + " was added");
-	    System.out.println("They are player number " + players.size());
-		return true;
 	}
 	
 	public int howManyPlayers() {

@@ -13,24 +13,33 @@ public class GameRunner {
 		Game aGame = new Game();
 		
 		aGame.add("Chet");
-		aGame.add("Pat");
-		aGame.add("Sue");
+		aGame.add("Pa");
+		aGame.add("Qu");
+		aGame.add("yrteth");
+		aGame.add("fe");
+		aGame.add("az");
+		aGame.add("gzee");
 		
-		Random rand = new Random();
-	
-		do {
+		if(aGame.isPlayable()) {
 			
-			aGame.roll(rand.nextInt(5) + 1);
+			Random rand = new Random();
 			
-			if (rand.nextInt(9) == 7) {
-				notAWinner = aGame.wrongAnswer();
-			} else {
-				notAWinner = aGame.wasCorrectlyAnswered();
-			}
-			
-			
-			
-		} while (notAWinner);
+			do {
+				
+				aGame.roll(rand.nextInt(5) + 1);
+				
+				if (rand.nextInt(9) == 7) {
+					notAWinner = aGame.wrongAnswer();
+				} else {
+					notAWinner = aGame.wasCorrectlyAnswered();
+				}
+				
+				
+				
+			} while (notAWinner);
+		} else {
+			System.out.println("Le nombre de joueur n'est pas correct");
+		}
 		
 	}
 }
