@@ -9,8 +9,17 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class SomeTest {
-	//private game
+	//
+	private Game game;
+	@Test
+	public void addTest(){
 
+		//When
+		boolean result = game.add("kevin");
+		//Then
+		assertTrue("Le joueur a été ajouter ?",result);
+	}
+/*
 	@Test
 	public void true_is_true() throws Exception {
 		assertTrue(false);
