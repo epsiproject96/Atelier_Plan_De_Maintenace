@@ -5,14 +5,16 @@ import com.adaptionsoft.games.uglytrivia.Game;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mock;
 
 import java.util.ArrayList;
 
 public class SomeTest {
 	//
+	@Mock
 	private Game game;
 	@Test
-	public void addTest(){
+	public void add_IF_Test(){
 
 		//When
 		boolean result = game.add("kevin");
