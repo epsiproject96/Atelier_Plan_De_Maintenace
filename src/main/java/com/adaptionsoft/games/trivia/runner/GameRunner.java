@@ -26,12 +26,17 @@ public class GameRunner {
 		Player playerC = new Player("C");
 		Player playerD = new Player("D");
 		Player playerE = new Player("E");
+		Player playerF = new Player("F");
+		Player playerG = new Player("G");
 		
 		aGame.add(playerA);
 		aGame.add(playerB);
 		aGame.add(playerC);
 		aGame.add(playerD);
 		aGame.add(playerE);
+		aGame.add(playerF);
+		//aGame.add(playerG);
+		
 		if(aGame.isPlayable()) {
 			
 			Random rand = new Random();
@@ -44,6 +49,7 @@ public class GameRunner {
 					String jokerUtilise = in.nextLine();
 					if(jokerUtilise.equals("Oui")) {
 						aGame.usedJoker(aGame.getPlayers().get(aGame.getCurrentPlayer()));
+						//notAWinner = false;
 						
 					} else if(jokerUtilise.equals("Non")) {
 						if (rand.nextInt(9) == 7) {
@@ -52,17 +58,16 @@ public class GameRunner {
 							notAWinner = aGame.wasCorrectlyAnswered();
 						}
 					}
+					
 				} else {
 					if (rand.nextInt(9) == 7) {
 						notAWinner = aGame.wrongAnswer();
-					} else {
+					} 
+					
+					else {
 						notAWinner = aGame.wasCorrectlyAnswered();
 					}
-				}
-				
-				
-				
-				
+				}	
 				
 			} while (notAWinner);
 		} else {
