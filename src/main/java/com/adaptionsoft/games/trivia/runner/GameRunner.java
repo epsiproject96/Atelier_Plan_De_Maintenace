@@ -19,14 +19,16 @@ public class GameRunner {
         System.out.println("You entered string "+s);
         
 		Game aGame = new Game(s);
-		
+
 		aGame.add("Chet");
-		aGame.add("Pa");
-		aGame.add("Qu");
-		aGame.add("yrteth");
-		aGame.add("fe");
-		aGame.add("az");
-		aGame.add("gzee");
+		aGame.add("Chet");
+		aGame.add("Chet");
+		aGame.add("Chet");
+		aGame.add("Chet");
+		aGame.add("Chet");
+		aGame.add("Chet");
+		aGame.add("Chet");
+		aGame.add("Chet");
 		
 		if(aGame.isPlayable()) {
 			
