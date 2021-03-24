@@ -1,6 +1,7 @@
 
 package com.adaptionsoft.games.trivia.runner;
 import java.util.Random;
+import java.util.Scanner;
 
 import com.adaptionsoft.games.uglytrivia.Game;
 
@@ -10,7 +11,14 @@ public class GameRunner {
 	private static boolean notAWinner;
 
 	public static void main(String[] args) {
-		Game aGame = new Game();
+		
+		Scanner in = new Scanner(System.in);
+		
+		System.out.println("R pour rock et T pour techno");
+        String s = in.nextLine();
+        System.out.println("You entered string "+s);
+        
+		Game aGame = new Game(s);
 		
 		aGame.add("Chet");
 		aGame.add("Pa");

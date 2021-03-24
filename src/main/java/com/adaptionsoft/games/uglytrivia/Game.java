@@ -8,26 +8,38 @@ public class Game {
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
-    
+    String choixCategory = "R";
     LinkedList popQuestions = new LinkedList();
     LinkedList scienceQuestions = new LinkedList();
     LinkedList sportsQuestions = new LinkedList();
     LinkedList rockQuestions = new LinkedList();
+    LinkedList technoQuestions = new LinkedList();
     
     int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
     
-    public  Game(){
+    public  Game(String choixQuestion){
+    	this.choixCategory = choixQuestion;
     	for (int i = 0; i < 50; i++) {
 			popQuestions.addLast("Pop Question " + i);
 			scienceQuestions.addLast(("Science Question " + i));
 			sportsQuestions.addLast(("Sports Question " + i));
-			rockQuestions.addLast(createRockQuestion(i));
+			if(choixQuestion.contains("R")) {
+				rockQuestions.addLast(createRockQuestion(i));
+			}
+			if(choixQuestion.contains("T")) {
+				technoQuestions.addLast(createTechnoQuestion(i));
+			}
+			
     	}
     }
 
-	public String createRockQuestion(int index){
+    public String createRockQuestion(int index){
 		return "Rock Question " + index;
+	}
+    
+    public String createTechnoQuestion(int index){
+		return "Techno Question " + index;
 	}
 	
 	public boolean isPlayable() {
@@ -73,7 +85,7 @@ public class Game {
 				System.out.println(players.get(currentPlayer) 
 						+ "'s new location is " 
 						+ places[currentPlayer]);
-				System.out.println("The category is " + currentCategory());
+				System.out.println("The category is " + currentCategory(this.choixCategory));
 				askQuestion();
 			} else {
 				System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
@@ -88,25 +100,27 @@ public class Game {
 			System.out.println(players.get(currentPlayer) 
 					+ "'s new location is " 
 					+ places[currentPlayer]);
-			System.out.println("The category is " + currentCategory());
+			System.out.println("The category is " + currentCategory(this.choixCategory));
 			askQuestion();
 		}
 		
 	}
 
 	private void askQuestion() {
-		if (currentCategory() == "Pop")
+		if (currentCategory(this.choixCategory) == "Pop")
 			System.out.println(popQuestions.removeFirst());
-		if (currentCategory() == "Science")
+		if (currentCategory(this.choixCategory) == "Science")
 			System.out.println(scienceQuestions.removeFirst());
-		if (currentCategory() == "Sports")
+		if (currentCategory(this.choixCategory) == "Sports")
 			System.out.println(sportsQuestions.removeFirst());
-		if (currentCategory() == "Rock")
-			System.out.println(rockQuestions.removeFirst());		
+		if (currentCategory(this.choixCategory) == "Rock")
+			System.out.println(rockQuestions.removeFirst());
+		if (currentCategory(this.choixCategory) == "Techno")
+			System.out.println(technoQuestions.removeFirst());	
 	}
 	
 	
-	private String currentCategory() {
+	private String currentCategory(String choixCategory) {
 		if (places[currentPlayer] == 0) return "Pop";
 		if (places[currentPlayer] == 4) return "Pop";
 		if (places[currentPlayer] == 8) return "Pop";
@@ -116,7 +130,16 @@ public class Game {
 		if (places[currentPlayer] == 2) return "Sports";
 		if (places[currentPlayer] == 6) return "Sports";
 		if (places[currentPlayer] == 10) return "Sports";
-		return "Rock";
+		if(choixCategory.equals("R")) {
+			return "Rock";
+		}
+		
+		else if(choixCategory.equals("T")) {
+			return "Techno";
+		} else {
+			return "Default";
+		}
+		
 	}
 
 	public boolean wasCorrectlyAnswered() {
