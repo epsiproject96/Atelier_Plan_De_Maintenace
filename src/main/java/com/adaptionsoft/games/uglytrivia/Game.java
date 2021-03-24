@@ -218,7 +218,8 @@ public class Game {
 	public void usedJoker(Player player) {
 		// TODO Auto-generated method stub
 		player.setIsJokerDisponible(false);
-		//currentPlayer++;
-		//System.out.println("Le joker de " + getPlayers().get(currentPlayer).getName() + "a été utilisé, aucun golds n'a été gagné et le joker ne sera plus disponible pour aucune autre question.");
+		currentPlayer++;
+		if (currentPlayer == getPlayers().size()) currentPlayer = 0;
+		System.out.println("Le joker de " + getPlayers().get(currentPlayer).getName() + "a été utilisé, aucun golds n'a été gagné et le joker ne sera plus disponible pour aucune autre question.");
 	}
 }

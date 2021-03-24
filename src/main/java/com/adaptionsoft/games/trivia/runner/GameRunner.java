@@ -49,7 +49,6 @@ public class GameRunner {
 					String jokerUtilise = in.nextLine();
 					if(jokerUtilise.equals("Oui")) {
 						aGame.usedJoker(aGame.getPlayers().get(aGame.getCurrentPlayer()));
-						//notAWinner = false;
 						
 					} else if(jokerUtilise.equals("Non")) {
 						if (rand.nextInt(9) == 7) {
